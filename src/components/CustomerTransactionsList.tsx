@@ -11,7 +11,6 @@ import 'primereact/resources/primereact.min.css';
 const { Option } = Select;
 
 const CustomerTransactionsList = () => {
-  const [queryVersion, setQueryVersion] = useState(1);
   const [filterName, setFilterName] = useState<string>('');
   const [filterMinAmount, setFilterMinAmount] = useState<number | ''>('');
   const [filterMaxAmount, setFilterMaxAmount] = useState<number | ''>('');
@@ -22,7 +21,7 @@ const CustomerTransactionsList = () => {
     data: customerData = [] as ICustomer[],
     error: customerError,
   } = useCustomQuery({
-    queryKey: ['customers', `${queryVersion}`],
+    queryKey: ['customers'],
     url: '/customers',
   });
 
@@ -31,7 +30,7 @@ const CustomerTransactionsList = () => {
     data: transactionData = [] as ITransaction[],
     error: transactionError,
   } = useCustomQuery({
-    queryKey: ['transactions', `${queryVersion}`],
+    queryKey: ['transactions'],
     url: '/transactions',
   });
 
